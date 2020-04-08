@@ -16,6 +16,7 @@
 #include "lwip/ip4_addr.h"
 #include "esp_http_server.h"
 #include "driver/gpio.h"
+#include "esp8266/gpio_register.h"
 
 #include "uri_parser.h"
 
@@ -25,34 +26,16 @@
 #define REQUEST_URI "/test"
 #define RESPONSE_LENGTH_MAX 100
 
-#define LED_PIN_IO GPIO_NUM_2
+#define LED_PIN_IO_MASK (1ULL << GPIO_NUM_2)
 
 esp_err_t http_get_handler(httpd_req_t *req);
 
-wifi_init_config_t wifi_init_config = WIFI_INIT_CONFIG_DEFAULT();
-wifi_ap_config_t wifi_config = {
-    .ssid = SSID,
-    .ssid_len = strlen(SSID),
-    .password = PASS,
-    .channel = 0,
-    .authmode = WIFI_AUTH_WPA_WPA2_PSK,
-    .max_connection = 2,
-};
 httpd_uri_t http_get_uri = {
     .uri = REQUEST_URI,
     .method = HTTP_GET,
     .handler = http_get_handler,
 };
-httpd_config_t http_server_config = HTTPD_DEFAULT_CONFIG();
 httpd_handle_t http_server = NULL;
-
-const gpio_config_t led_gpio_config = {
-    .intr_type = GPIO_INTR_DISABLE,
-    .mode = GPIO_MODE_OUTPUT,
-    .pin_bit_mask = (1ULL << LED_PIN_IO),
-    .pull_down_en = 0,
-    .pull_up_en = 0,
-};
 
 esp_err_t http_get_handler(httpd_req_t *req)
 {
@@ -61,9 +44,9 @@ esp_err_t http_get_handler(httpd_req_t *req)
     static char key_value_row[RESPONSE_LENGTH_MAX];
     uint8_t i;
 
-    response[0] = 0;
+    *response = 0;
 
-    strcat(response, "<H1>GET Params:<br>");
+    strcat(response, "<H1>GET Params:</H1><H2>");
 
     uri_parser_parse(&uri_params, req->uri);
 
@@ -76,17 +59,17 @@ esp_err_t http_get_handler(httpd_req_t *req)
             if (strcmp(uri_params.params[i].value, "on") == 0)
             {
                 printf("Led on\n");
-                gpio_set_level(LED_PIN_IO, 0);
+                GPIO_REG_WRITE(GPIO_OUT_W1TC_ADDRESS, LED_PIN_IO_MASK);
             }
             else if (strcmp(uri_params.params[i].value, "off") == 0)
             {
                 printf("Led off\n");
-                gpio_set_level(LED_PIN_IO, 1);
+                GPIO_REG_WRITE(GPIO_OUT_W1TS_ADDRESS, LED_PIN_IO_MASK);
             }
         }
     }
 
-    strcat(response, "</H1>");
+    strcat(response, "</H2>");
 
     httpd_resp_send(req, response, strlen(response));
     return ESP_OK;
@@ -94,6 +77,8 @@ esp_err_t http_get_handler(httpd_req_t *req)
 
 void start_webserver(void)
 {
+    const httpd_config_t http_server_config = HTTPD_DEFAULT_CONFIG();
+
     printf("Starting server on port: '%d'\n", http_server_config.server_port);
     esp_err_t err = httpd_start(&http_server, &http_server_config);
     if (err == ESP_OK)
@@ -133,18 +118,36 @@ static esp_err_t event_handler(void *ctx, system_event_t *event)
 
 void init_wifi()
 {
+    const wifi_init_config_t wifi_init_config = WIFI_INIT_CONFIG_DEFAULT();
+    const wifi_ap_config_t wifi_ap_config = {
+        .ssid = SSID,
+        .ssid_len = strlen(SSID),
+        .password = PASS,
+        .channel = 0,
+        .authmode = WIFI_AUTH_WPA_WPA2_PSK,
+        .max_connection = 2,
+    };
+
     tcpip_adapter_init();
     esp_event_loop_init(event_handler, NULL);
     esp_wifi_init(&wifi_init_config);
     esp_wifi_set_mode(WIFI_MODE_AP);
-    esp_wifi_set_config(ESP_IF_WIFI_AP, (wifi_config_t *)&wifi_config);
+    esp_wifi_set_config(ESP_IF_WIFI_AP, (wifi_config_t *)&wifi_ap_config);
 
     esp_wifi_start();
 }
 
 void init_gpio()
 {
-    gpio_set_level(LED_PIN_IO, 1);
+    const gpio_config_t led_gpio_config = {
+        .intr_type = GPIO_INTR_DISABLE,
+        .mode = GPIO_MODE_OUTPUT,
+        .pin_bit_mask = LED_PIN_IO_MASK,
+        .pull_down_en = 0,
+        .pull_up_en = 0,
+    };
+
+    GPIO_REG_WRITE(GPIO_OUT_W1TS_ADDRESS, LED_PIN_IO_MASK);
     gpio_config(&led_gpio_config);
 }
 

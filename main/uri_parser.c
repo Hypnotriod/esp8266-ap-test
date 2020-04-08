@@ -19,12 +19,13 @@ void uri_parser_parse(uri_params_t *uri_params, const char *uri)
 
     while (*uri != 0)
     {
-        if (*uri == '=')
+        if (p_key != NULL && *uri == '=')
         {
             *p_buffer++ = 0;
             uri_params->params[uri_params->size].key = p_key;
             uri_params->params[uri_params->size].value = p_buffer;
             uri_params->size++;
+            p_key = NULL;
         }
         else if (*uri == '&')
         {

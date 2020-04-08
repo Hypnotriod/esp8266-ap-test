@@ -1,5 +1,4 @@
 {
-    "c-cpp-flylint.cppcheck.executable": "C:/Program Files/Cppcheck/cppcheck.exe",
     "terminal.integrated.shell.windows": "C:/msys32/usr/bin/bash.exe",
     "terminal.integrated.shellArgs.windows": [
         "--login",
