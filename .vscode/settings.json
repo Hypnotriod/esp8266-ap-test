@@ -8,6 +8,7 @@
     "C_Cpp.intelliSenseEngine": "Tag Parser",
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/build/include",
+        "${IDF_PATH}/components/esp8266/include",
         "${IDF_PATH}/components/app_update/include",
         "${IDF_PATH}/components/bootloader_support/include",
         "${IDF_PATH}/components/esp_common/include",
@@ -48,6 +49,9 @@
         "stdio.h": "c",
         "type_traits": "cpp",
         "string.h": "c",
-        "sdkconfig.h": "c"
+        "sdkconfig.h": "c",
+        "tcpip_adapter.h": "c",
+        "esp_event_loop.h": "c",
+        "nvs_flash.h": "c"
     }
 }

@@ -97,9 +97,7 @@ static esp_err_t event_handler(void *ctx, system_event_t *event)
     switch (event->event_id)
     {
     case SYSTEM_EVENT_AP_STAIPASSIGNED:
-        // Required fix fro tcpip_adapter_dhcps_cb
-        // https://github.com/espressif/esp-idf/blob/3bb7dba9957ee71a236058322ae5e70f96f9a104/components/tcpip_adapter/tcpip_adapter_lwip.c
-        printf("IP assigned: %s\n", ip4addr_ntoa(&event->event_info.ap_staipassigned.ip.addr));
+        printf("IP assigned: %s\n", ip4addr_ntoa(&event->event_info.ap_staipassigned.ip));
 
         if (http_server == NULL)
         {
