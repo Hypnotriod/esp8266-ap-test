@@ -1,5 +1,5 @@
 # esp8266-ap-test
-`ESP8266` template `WIFI Access point` project based on `ESP8266_RTOS_SDK`  
+`ESP8266` template of `WIFI Access point` project based on `ESP8266_RTOS_SDK`  
 Configured to compile with `VSCode` under `Windows` using [Toolchain for Windows (Legacy GNU Make)](https://docs.espressif.com/projects/esp-idf/en/stable/get-started-legacy/windows-setup.html)  
 
 ## Setup guide and known issues
