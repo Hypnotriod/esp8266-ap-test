@@ -2,7 +2,7 @@
 `ESP8266` template of `WIFI Access point` project based on `ESP8266_RTOS_SDK`  
 Configured to compile with `VSCode` under `Windows` using [Toolchain for Windows (Legacy GNU Make)](https://docs.espressif.com/projects/esp-idf/en/stable/get-started-legacy/windows-setup.html)  
 
-## Setup guide and known issues
+## Toolchain setup guide
 * Clone git repository `https://github.com/espressif/ESP8266_RTOS_SDK.git` into `C:\Espressif\ESP8266_RTOS_SDK` folder. Alternative path can be used.  
 Checkout lastest release branch. In my case `origin/release/v3.3` worked fine.  
 Add system environment variable `IDF_PATH` with `C:\Espressif\ESP8266_RTOS_SDK` value.  
@@ -19,6 +19,6 @@ Create `esp8266_toolchain.sh` file in the `C:\msys32\etc\profile.d` folder with:
 # Build and Flash
 Check for `CONFIG_ESPTOOLPY_PORT` value in `sdkconfig`.  
 
-`VSCode` -> `Ctrl` + `Shift` + `B`:  
+`VSCode` -> `Ctrl + Shift + B`:  
 * **Build** - to build project  
 * **Flash** - to flash project
