@@ -25,6 +25,7 @@
         "${IDF_PATH}/components/json/cJSON",
         "${IDF_PATH}/components/log/include",
         "${IDF_PATH}/components/lwip/include",
+        "${IDF_PATH}/components/lwip/lwip/src/include",
         "${IDF_PATH}/components/mdns/include",
         "${IDF_PATH}/components/mqtt/esp-mqtt/include",
         "${IDF_PATH}/components/newlib/newlib/include",
@@ -42,8 +43,7 @@
         "${IDF_PATH}/components/vfs/include",
         "${IDF_PATH}/components/wifi_provisioning/include",
         "${IDF_PATH}/components/wpa_supplicant/include",
-        "${IDF_PATH}/components/freertos/port/esp8266/include/freertos",
-        "${IDF_PATH}/components/lwip/lwip/src/include"
+        "${IDF_PATH}/components/freertos/port/esp8266/include/freertos"
     ],
     "files.associations": {
         "stdio.h": "c",
@@ -52,6 +52,7 @@
         "sdkconfig.h": "c",
         "tcpip_adapter.h": "c",
         "esp_event_loop.h": "c",
-        "nvs_flash.h": "c"
+        "nvs_flash.h": "c",
+        "ip4_addr.h": "c"
     }
 }

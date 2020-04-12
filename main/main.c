@@ -24,7 +24,7 @@
 #define PASS "12345678"
 
 #define REQUEST_URI "/test"
-#define RESPONSE_LENGTH_MAX 100
+#define RESPONSE_LENGTH_MAX 256
 
 #define LED_PIN_IO_MASK (1ULL << GPIO_NUM_2)
 
@@ -44,9 +44,9 @@ esp_err_t http_get_handler(httpd_req_t *req)
     static char key_value_row[RESPONSE_LENGTH_MAX];
     uint8_t i;
 
-    *response = 0;
+    *response = '\0';
 
-    strcat(response, "<H1>GET Params:</H1><H2>");
+    strcat(response, "<H3>To play with led, send led=on or led=off</H3><H1>GET Params:</H1><H2>");
 
     uri_parser_parse(&uri_params, req->uri);
 

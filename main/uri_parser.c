@@ -7,7 +7,7 @@ void uri_parser_parse(uri_params_t *uri_params, const char *uri)
     char *p_key = uri_params->buffer;
     uri_params->size = 0;
 
-    while (*uri != 0)
+    while (*uri != '\0')
     {
         if (*uri == '?')
         {
@@ -17,7 +17,7 @@ void uri_parser_parse(uri_params_t *uri_params, const char *uri)
         uri++;
     }
 
-    while (*uri != 0)
+    while (*uri != '\0')
     {
         if (p_key != NULL && *uri == '=')
         {
@@ -33,7 +33,7 @@ void uri_parser_parse(uri_params_t *uri_params, const char *uri)
             {
                 break;
             }
-            *p_buffer++ = 0;
+            *p_buffer++ = '\0';
             p_key = p_buffer;
         }
         else
@@ -44,5 +44,5 @@ void uri_parser_parse(uri_params_t *uri_params, const char *uri)
         uri++;
     }
 
-    *p_buffer = 0;
+    *p_buffer = '\0';
 }
