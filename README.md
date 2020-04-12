@@ -8,10 +8,10 @@ Checkout lastest release branch. In my case `origin/release/v3.3` worked fine.
 Add system environment variable `IDF_PATH` with `C:\Espressif\ESP8266_RTOS_SDK` value.  
 
 * Download [esp32_win32_msys2_environment_and_gcc8_toolchain-20191220.zip](https://dl.espressif.com/dl/esp32_win32_msys2_environment_and_gcc8_toolchain-20191220.zip)  
-Unzip into `C:\` (Toolchain should be located in `C:\msys32`, otherwise you will need to correct the `"terminal.integrated.shell.windows"` path in `.vscode\settings.json`)  
+Unzip into `C:\` (Toolchain should be located at `C:\msys32`, otherwise you will need to correct the `"terminal.integrated.shell.windows"` path in `.vscode\settings.json`)  
 
-* To provide **xtensa-lx106 toolchain** and **python** paths:  
-Create `esp8266_toolchain.sh` file in the `C:\msys32\etc\profile.d` folder with:
+* To provide **xtensa-lx106 toolchain** and **python** paths for environment,  
+create `esp8266_toolchain.sh` file in the `C:\msys32\etc\profile.d` folder with:
 
       export PATH="$PATH:/opt/xtensa-lx106-elf/bin"  
       export PATH="$PATH:/mingw32/bin"
