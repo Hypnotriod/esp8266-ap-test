@@ -1,6 +1,6 @@
 # esp8266-ap-test
 `ESP8266` template of `WIFI Access point` project based on `ESP8266_RTOS_SDK`  
-Configured to compile with `VSCode` under `Windows` using [Toolchain for Windows (Legacy GNU Make)](https://docs.espressif.com/projects/esp-idf/en/stable/get-started-legacy/windows-setup.html)  
+Configured to compile with `VSCode` on `Windows` using [Toolchain for Windows (Legacy GNU Make)](https://docs.espressif.com/projects/esp-idf/en/stable/get-started-legacy/windows-setup.html)  
 
 ## Toolchain setup guide
 * Clone git repository `https://github.com/espressif/ESP8266_RTOS_SDK.git` into `C:\Espressif\ESP8266_RTOS_SDK` folder. Alternative path can be used.  
