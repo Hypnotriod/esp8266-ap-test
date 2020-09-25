@@ -6,13 +6,7 @@
             "command": "make",
             "args": [
                 "-C",
-                "\"${workspaceFolder}\"",
-                "|",
-                "sed",
-                "-e",
-                "'s/_\\\\_/_g/'",
-                "-e",
-                "'s/_[Cc]:_/c_g/'"
+                "\"${workspaceFolder}\""
             ],
             "group": "build",
             "presentation": {
@@ -31,13 +25,7 @@
             "args": [
                 "flash",
                 "-C",
-                "\"${workspaceFolder}\"",
-                "|",
-                "sed",
-                "-e",
-                "'s/_\\\\_/_g/'",
-                "-e",
-                "'s/_[Cc]:_/c_g/'"
+                "\"${workspaceFolder}\""
             ],
             "group": "build",
             "presentation": {
