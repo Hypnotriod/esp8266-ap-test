@@ -24,7 +24,7 @@
 #define PASS "12345678"
 
 #define REQUEST_URI "/test"
-#define RESPONSE_LENGTH_MAX 256
+#define RESPONSE_LENGTH_MAX 512
 
 #define LED_PIN_IO_MASK (1ULL << GPIO_NUM_2)
 
@@ -41,7 +41,6 @@ esp_err_t http_get_handler(httpd_req_t *req)
 {
     static uri_params_t uri_params;
     static char response[RESPONSE_LENGTH_MAX];
-    static char key_value_row[RESPONSE_LENGTH_MAX];
     uint8_t i;
 
     *response = '\0';
@@ -52,8 +51,8 @@ esp_err_t http_get_handler(httpd_req_t *req)
 
     for (i = 0; i < uri_params.size; i++)
     {
-        sprintf(key_value_row, "Key=%s, Value=%s<br>", uri_params.params[i].key, uri_params.params[i].value);
-        strcat(response, key_value_row);
+        sprintf(response + strlen(response), "Key=%s, Value=%s<br>",
+                uri_params.params[i].key, uri_params.params[i].value);
         if (strcmp(uri_params.params[i].key, "led") == 0)
         {
             if (strcmp(uri_params.params[i].value, "on") == 0)
