@@ -5,7 +5,6 @@
         "-i",
     ],
     "diffEditor.ignoreTrimWhitespace": false,
-    "C_Cpp.intelliSenseEngine": "Tag Parser",
     "C_Cpp.default.includePath": [
         "${workspaceFolder}/build/include",
         "${IDF_PATH}/components/esp8266/include",
@@ -17,14 +16,19 @@
         "${IDF_PATH}/components/esp_http_server/include",
         "${IDF_PATH}/components/esp_https_ota/include",
         "${IDF_PATH}/components/esp_ringbuf/include",
-        "${IDF_PATH}/components/esp8266/include",
         "${IDF_PATH}/components/freertos/include",
+        "${IDF_PATH}/components/freertos/port/esp8266/include",
+        "${IDF_PATH}/components/freertos/port/esp8266/include/freertos",
+        "${IDF_PATH}/components/freertos/include/freertos/private",
         "${IDF_PATH}/components/heap/include",
+        "${IDF_PATH}/components/heap/port/esp8266/include",
         "${IDF_PATH}/components/http_parser/include",
         "${IDF_PATH}/components/jsmn/include",
         "${IDF_PATH}/components/json/cJSON",
         "${IDF_PATH}/components/log/include",
         "${IDF_PATH}/components/lwip/include",
+        "${IDF_PATH}/components/lwip/include/lwip/apps",
+        "${IDF_PATH}/components/lwip/port/esp8266/include",
         "${IDF_PATH}/components/lwip/lwip/src/include",
         "${IDF_PATH}/components/mdns/include",
         "${IDF_PATH}/components/mqtt/esp-mqtt/include",
@@ -42,17 +46,6 @@
         "${IDF_PATH}/components/util/include",
         "${IDF_PATH}/components/vfs/include",
         "${IDF_PATH}/components/wifi_provisioning/include",
-        "${IDF_PATH}/components/wpa_supplicant/include",
-        "${IDF_PATH}/components/freertos/port/esp8266/include/freertos"
-    ],
-    "files.associations": {
-        "stdio.h": "c",
-        "type_traits": "cpp",
-        "string.h": "c",
-        "sdkconfig.h": "c",
-        "tcpip_adapter.h": "c",
-        "esp_event_loop.h": "c",
-        "nvs_flash.h": "c",
-        "ip4_addr.h": "c"
-    }
+        "${IDF_PATH}/components/wpa_supplicant/include"
+    ]
 }
