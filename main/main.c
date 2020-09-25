@@ -131,7 +131,7 @@ void init_wifi()
     esp_event_loop_init(event_handler, NULL);
     esp_wifi_init(&wifi_init_config);
     esp_wifi_set_mode(WIFI_MODE_AP);
-    esp_wifi_set_config(ESP_IF_WIFI_AP, (wifi_config_t *)&wifi_ap_config);
+    esp_wifi_set_config(ESP_IF_WIFI_AP, &wifi_ap_config);
 
     esp_wifi_start();
 }
@@ -142,8 +142,8 @@ void init_gpio()
         .intr_type = GPIO_INTR_DISABLE,
         .mode = GPIO_MODE_OUTPUT,
         .pin_bit_mask = LED_PIN_IO_MASK,
-        .pull_down_en = 0,
-        .pull_up_en = 0,
+        .pull_down_en = GPIO_PULLDOWN_DISABLE,
+        .pull_up_en = GPIO_PULLUP_DISABLE,
     };
 
     GPIO_REG_WRITE(GPIO_OUT_W1TS_ADDRESS, LED_PIN_IO_MASK);
