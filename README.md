@@ -27,7 +27,7 @@ Check for `CONFIG_ESPTOOLPY_PORT` value in `sdkconfig`.
 * **C/C++ for Visual Studio Code** `ms-vscode.cpptools`
 
 ## Test AP application
-* Connect to **Test Station** via WI-FI using **12345678** pass
+* Connect to `Test Station` via WI-FI using `12345678` pass
 * Open `http://192.168.4.1/test`
 * Send `http://192.168.4.1/test?led=on` to light the embedded LED
-* Watch for the logs at **115200** baud
+* Watch for the logs at `115200` baud
