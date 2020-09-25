@@ -131,7 +131,7 @@ void init_wifi()
     esp_event_loop_init(event_handler, NULL);
     esp_wifi_init(&wifi_init_config);
     esp_wifi_set_mode(WIFI_MODE_AP);
-    esp_wifi_set_config(ESP_IF_WIFI_AP, &wifi_ap_config);
+    esp_wifi_set_config(ESP_IF_WIFI_AP, (wifi_config_t *)&wifi_ap_config);
 
     esp_wifi_start();
 }
