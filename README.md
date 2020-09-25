@@ -22,3 +22,9 @@ Check for `CONFIG_ESPTOOLPY_PORT` value in `sdkconfig`.
 `VSCode` -> `Ctrl` + `Shift` + `B`:  
 * **Build** - to build project  
 * **Flash** - to flash project
+
+# Test AP
+* Connect to **Test Station** via WI-FI using **12345678** pass
+* Open `http://192.168.4.1/test`
+* Send `http://192.168.4.1/test?led=on` to light the embedded LED
+* Watch for the logs at **115200** baud
