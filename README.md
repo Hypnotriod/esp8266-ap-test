@@ -23,7 +23,10 @@ Check for `CONFIG_ESPTOOLPY_PORT` value in `sdkconfig`.
 * **Build** - to build project  
 * **Flash** - to flash project
 
-## Test AP
+## Plugins
+* **C/C++ for Visual Studio Code** `ms-vscode.cpptools`
+
+## Test AP application
 * Connect to **Test Station** via WI-FI using **12345678** pass
 * Open `http://192.168.4.1/test`
 * Send `http://192.168.4.1/test?led=on` to light the embedded LED
