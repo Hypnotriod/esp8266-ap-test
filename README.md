@@ -16,14 +16,14 @@ create `esp8266_toolchain.sh` file in the `C:\msys32\etc\profile.d` folder with:
       export PATH="$PATH:/opt/xtensa-lx106-elf/bin"  
       export PATH="$PATH:/mingw32/bin"
 
-# Build and Flash
+## Build and Flash
 Check for `CONFIG_ESPTOOLPY_PORT` value in `sdkconfig`.  
 
 `VSCode` -> `Ctrl + Shift + B`:  
 * **Build** - to build project  
 * **Flash** - to flash project
 
-# Test AP
+## Test AP
 * Connect to **Test Station** via WI-FI using **12345678** pass
 * Open `http://192.168.4.1/test`
 * Send `http://192.168.4.1/test?led=on` to light the embedded LED
